@@ -58,7 +58,7 @@ export function parseClientJson(raw: string): GoogleClient {
 
 export function saveCredentials(file: string): GoogleClient {
   const client = parseClientJson(readFileSync(file, "utf8"));
-  writeSecret(CREDENTIALS_PATH, JSON.stringify(client));
+  writeSecret(CREDENTIALS_PATH, JSON.stringify({ client_id: client.clientId, client_secret: client.clientSecret }));
   return client;
 }
 
